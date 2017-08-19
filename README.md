@@ -1,3 +1,1 @@
-"# tax-calculator" 
-"# HackerPractise" 
-"# HackerPractise" 
+This project is provides solution for datastructures problems.
