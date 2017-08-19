@@ -1,1 +1,1 @@
-This project is provides solution for datastructures problems.
+This project provides solution for datastructures problems.
