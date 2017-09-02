@@ -13,31 +13,27 @@ public class NonDivisibleSubset {
         Scanner in = ScannerUtil.getScanner();
         int n = in.nextInt();
         int k = in.nextInt();
-        int[] a = new int[n];
-        for(int a_i=0; a_i < n; a_i++){
-            a[a_i] = in.nextInt();
+        int[] a = new int[k];
+        for(int i=0;i<n;i++){
+            int val = in.nextInt();
+            int ind = val % k;
+            a[ind]++;
         }
 
-        printNonDivisibleSubset(n, a, k);
-    }
+        int result=0;
 
-    private static void printNonDivisibleSubset(int n, int[] a, int k) {
-        int nonDivisibleCount = 0;
-        for (int i = 0; i < n; i++) {
-            int count = 0;
-            for (int j = 0; j < n; j++) {
-                if (i != j) {
-                    if ((a[i] + a[j]) % k == 0) {
-                        count++;
-                    }
-                }
-            }
-
-            if(count < n-1){
-                nonDivisibleCount++;
-            }
+        if(k%2==0 && a[k/2] > 0) {
+            result++;
         }
 
-        System.out.println(nonDivisibleCount);
+        result=result+Math.min(a[0],1);
+
+        for(int j=1;j<=k/2;j++) {
+            if (j != k - j) {
+                result += Math.max(a[j], a[k - j]);
+            }
+        }
+        System.out.println(result);
+        in.close();
     }
 }

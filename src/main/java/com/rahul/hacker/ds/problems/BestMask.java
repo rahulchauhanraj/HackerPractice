@@ -62,6 +62,7 @@ public class BestMask {
         //System.out.println(Integer.toBinaryString(result));
         //System.out.println(result);
         solveTest(a);
+        in.close();
     }
 
     static void solveTest(int[] a){
