@@ -11,7 +11,7 @@ public class ScannerUtil {
 
     public static Scanner getScanner(){
         ClassLoader classLoader = new ScannerUtil().getClass().getClassLoader();
-        File file = new File(classLoader.getResource("inputs.txt").getFile());
+        File file = new File(classLoader.getResource("inputs.txt").getFile().replace("%20", " "));
 
         Scanner scanner = null;
 
