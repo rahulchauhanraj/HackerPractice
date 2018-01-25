@@ -6,6 +6,11 @@ public class SinglyListNode {
 
     public SinglyListNode() { }
 
+    public SinglyListNode(int data) {
+        this.data = data;
+        this.next = null;
+    }
+
     public SinglyListNode(int data, SinglyListNode next) {
         this.data = data;
         this.next = next;
@@ -25,5 +30,12 @@ public class SinglyListNode {
 
     public void setNext(SinglyListNode next) {
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "SinglyListNode{" +
+                "data=" + data +
+                '}';
     }
 }
