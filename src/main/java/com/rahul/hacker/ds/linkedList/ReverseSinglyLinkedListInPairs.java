@@ -7,21 +7,19 @@ public class ReverseSinglyLinkedListInPairs {
 
     public static void main(String args[]) {
         SinglyListNode head = getSinglyLinkedList();
-        int k = 4;
+        int k = 5;
         SinglyListNode newHead = reverse(head, k);
         printSinglyLinkedList(newHead);
     }
 
     private static SinglyListNode reverse(SinglyListNode head, int k) {
         int size = getSinglyLinkedListSize(head);
-        SinglyListNode[] newHead = new SinglyListNode[1];
-        reverse(null, head, k, size, newHead);
-        return newHead[0];
+        return reverse(null, head, k, size);
     }
 
-    private static SinglyListNode reverse(SinglyListNode last, SinglyListNode head, int k, int remaining, SinglyListNode[] newHead) {
+    private static SinglyListNode reverse(SinglyListNode last, SinglyListNode head, int k, int remaining) {
         if(k > remaining) {
-            return null;
+            return head;
         }
 
         int count = 0;
@@ -35,15 +33,14 @@ public class ReverseSinglyLinkedListInPairs {
             head = temp;
             count++;
         }
-        if(newHead[0] == null) {
-            newHead[0] = prev;
-        }
+
         if(last != null) {
             last.setNext(prev);
         }
         start.setNext(head);
 
-        return reverse(start, head, k, remaining-k, newHead);
+        reverse(start, head, k, remaining-k);
+        return prev;
     }
 
     private static int getSinglyLinkedListSize(SinglyListNode head) {
