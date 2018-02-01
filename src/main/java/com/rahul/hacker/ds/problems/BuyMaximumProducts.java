@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class BuyMaximumProducts {
 
-    static class Node implements Comparable<Main.Node>{
+    /*static class Node implements Comparable<Main.Node>{
         Integer value;
         Integer index;
 
@@ -68,5 +68,5 @@ public class BuyMaximumProducts {
         long count = buyMaximumProducts(10, 4000L, ar);
         //long count = buyMaximumProducts(3, 45L, ar);
         System.out.println(count);
-    }
+    }*/
 }
