@@ -44,7 +44,7 @@ public class RWLock {
 			 * if(i == 2){ throw new Exception("my exception"); }
 			 */
 			System.out.println("Thread " + i + " is writing...");
-			 Thread.sleep(3000);
+			 Thread.sleep(2000);
 			// }
 			// finally {
 

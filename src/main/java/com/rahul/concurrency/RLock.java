@@ -12,7 +12,7 @@ public class RLock {
 
 	Lock lock = new ReentrantLock();
 	Condition cond = lock.newCondition();
-
+	Condition cond1 = lock.newCondition();
 	public static void main(String[] args) {
 		new RLock().exec();
 	}
@@ -41,7 +41,7 @@ public class RLock {
 				lock.unlock();
 			}
 
-		}, 2, TimeUnit.SECONDS);
+		}, 10, TimeUnit.SECONDS);
 		sser.shutdown();
 	}
 
