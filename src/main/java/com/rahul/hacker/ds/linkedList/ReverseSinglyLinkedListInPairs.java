@@ -23,7 +23,6 @@ public class ReverseSinglyLinkedListInPairs {
         }
 
         int count = 0;
-
         SinglyListNode start = head;
         SinglyListNode prev = null;
         while(count < k) {
