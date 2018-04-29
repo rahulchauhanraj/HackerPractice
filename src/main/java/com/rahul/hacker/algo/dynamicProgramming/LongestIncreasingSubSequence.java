@@ -1,4 +1,4 @@
-package com.rahul.hacker.ds.dynamicProgramming;
+package com.rahul.hacker.algo.dynamicProgramming;
 
 /**
  * Longest Increasing Sub-Sequence (LIS) problem can be solved using Dynamic Programming.

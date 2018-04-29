@@ -1,10 +1,6 @@
 package com.rahul.hacker.ds;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import java.util.Scanner;
-import java.math.*;
 
 public class BalanceLog {
     public double balancePoint(Log log) {

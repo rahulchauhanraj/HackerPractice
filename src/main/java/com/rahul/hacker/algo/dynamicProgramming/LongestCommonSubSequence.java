@@ -1,4 +1,4 @@
-package com.rahul.hacker.algo;
+package com.rahul.hacker.algo.dynamicProgramming;
 
 //  Java implementation of finding length of longest
 // Common substring using Dynamic Programming

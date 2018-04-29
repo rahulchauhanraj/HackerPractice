@@ -24,12 +24,20 @@ class  TreeNodeInfo {
 public class IsSubTree {
 
     public static void main(String arg[]) {
-        BSTNode root1 = new BSTNode(50);
-        root1.setLeft(new BSTNode(25));
-        root1.setRight(new BSTNode(100));
+        BSTNode root1 = new BSTNode(100);
+        root1.setLeft(new BSTNode(50));
+        root1.setRight(new BSTNode(150));
 
-        BSTNode root2 = new BSTNode(50);
-        root2.setLeft(new BSTNode(100));
+        BSTNode root2 = new BSTNode(150);
+        BSTNode b1 = new BSTNode(100);
+        BSTNode b2 = new BSTNode(200);
+        root2.setLeft(b1);
+        root2.setRight(b2);
+
+        BSTNode c1 = new BSTNode(50);
+        BSTNode c2 = new BSTNode(250);
+        b1.setLeft(c1);
+        b2.setRight(c2);
 
         System.out.println(isSubTree(root1, root2));
     }
@@ -39,13 +47,9 @@ public class IsSubTree {
         if (a == null) {
             return;
         }
-        BSTNode lastNode = last[0];
         last[0] = a;
         traverse(a.getLeft(), last, nodesA);
-
-        TreeNodeInfo nodeInfo = new TreeNodeInfo(a, lastNode);
-        nodesA.add(nodeInfo);
-
+        nodesA.add(new TreeNodeInfo(a, last[0]));
         traverse(a.getRight(), last, nodesA);
     }
 
@@ -72,22 +76,22 @@ public class IsSubTree {
                 if (j != 0) {
                     BSTNode bstNodeA = nodeA.getLastNode();
                     BSTNode bstNodeB = nodeB.getLastNode();
-                    if(bstNodeA != null && bstNodeB != null && bstNodeA.getData() == bstNodeB.getData()) {
-                        return true;
-                    }
-                    if (bstNodeA == null || bstNodeB == null) {
+                    if(bstNodeA != null && bstNodeB != null && bstNodeA.getData() != bstNodeB.getData()) {
+                        return false;
+                    } else
+                    if ((bstNodeA == null && bstNodeB != null) || (bstNodeA != null && bstNodeB == null)) {
                         return false;
                     }
                 }
                 j++;
+            } else {
+                if(j > 0) {
+                    return false;
+                }
             }
             i++;
         }
 
-        if (j == sizeB) {
-            return true;
-        } else {
-            return true;
-        }
+        return j == sizeB;
     }
 }
