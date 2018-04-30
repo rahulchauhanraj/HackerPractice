@@ -2,7 +2,7 @@ package com.rahul.hacker.algo.dynamicProgramming;
 
 //  Java implementation of finding length of longest
 // Common substring using Dynamic Programming
-public class LongestCommonSubSequence
+public class LongestCommonSubSequenceNonContiguous
 {
     /*
        Returns length of longest common substring
@@ -27,13 +27,12 @@ public class LongestCommonSubSequence
                     LCStuff[i][j] = 0;
                 } else if (X[i - 1] == Y[j - 1]) {
                     LCStuff[i][j] = LCStuff[i - 1][j - 1] + 1;
-                    result = Integer.max(result, LCStuff[i][j]);
                 } else {
-                    LCStuff[i][j] = 0;
+                    LCStuff[i][j] = Math.max(LCStuff[i - 1][j], LCStuff[i][j - 1]);
                 }
             }
         }
-        return result;
+        return LCStuff[m][n];
     }
 
     // Driver Program to test above function
@@ -41,6 +40,9 @@ public class LongestCommonSubSequence
     {
         String X = "OldSite:GeeksforGeeks.com";
         String Y = "NewSite:GeeksQuiz.com";
+
+        //String X = "rsbadgmnsrz";
+        //String Y = "abcdlmpr";
 
         int m = X.length();
         int n = Y.length();

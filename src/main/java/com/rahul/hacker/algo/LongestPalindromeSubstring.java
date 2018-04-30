@@ -7,6 +7,44 @@ package com.rahul.hacker.algo;
  */
 public class LongestPalindromeSubstring {
 
+    private static int longestPalindromeSubstring(String s) {
+        int max = 1;
+        int l = s.length();
+        int start = 0;
+        for(int i = 1; i < l; i++){
+            // palindrome even
+            int j = i-1; int k = i; int cSum = 0;
+
+            while (j >= 0 && k < l && s.charAt(j) == s.charAt(k)){
+                cSum += 2;
+                j--;
+                k++;
+            }
+
+            if(cSum > max) {
+                max = cSum;
+                start = j+1;
+            }
+
+            // palindrome odd
+            cSum = 1; j = i-1; k = i+1;
+
+            while (j >= 0 && k < l && s.charAt(j) == s.charAt(k)){
+                cSum += 2;
+                j--;
+                k++;
+            }
+
+            if(cSum > max) {
+                max = cSum;
+                start = j+1;
+            }
+        }
+
+        System.out.println("Longest palindrome substring is: " + s.substring(start, start + max));
+        return max;
+    }
+
     static int longestPalSubstr(String str) {
         int maxLength = 1; // The result (length of LPS)
 
@@ -53,7 +91,7 @@ public class LongestPalindromeSubstring {
     // Driver program to test above function
     public static void main(String[] args) {
         String str = "forgeeksskeegfor";
-        System.out.println("Length is: " + longestPalSubstr(str));
+        System.out.println("Length is: " + longestPalindromeSubstring(str));
     }
 
 }
