@@ -1,4 +1,4 @@
-package com.rahul.hacker.algo.dynamicProgramming;
+package com.rahul.hacker.algo.dynamic.programming;
 
 /**
  * Given an array of positive numbers, find the maximum sum of a subsequence with the constraint that no 2 numbers in the sequence should be adjacent in the array.

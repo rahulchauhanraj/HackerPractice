@@ -1,4 +1,4 @@
-package com.rahul.hacker.algo.dynamicProgramming;
+package com.rahul.hacker.algo.dynamic.programming;
 
 /**
  * Write an efficient program to find the sum of contiguous subarray within a one-dimensional array of numbers which has

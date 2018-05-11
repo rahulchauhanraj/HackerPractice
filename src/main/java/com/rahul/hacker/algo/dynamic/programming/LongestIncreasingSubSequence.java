@@ -1,4 +1,4 @@
-package com.rahul.hacker.algo.dynamicProgramming;
+package com.rahul.hacker.algo.dynamic.programming;
 
 import java.util.Arrays;
 
