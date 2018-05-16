@@ -1,18 +1,10 @@
 package com.rahul;
 
-import java.time.Instant;
-import java.util.*;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
 public class Main {
 
     public static void main(String[] args) {
-
-        System.out.println(Integer.toHexString(5).toUpperCase());
-        System.out.println(Instant.now().toEpochMilli());
+        Long n = 9007042835703847503L;
+        String val = Long.toString(Long.valueOf(String.valueOf(n), 10), 2);
+        System.out.println(val);
     }
-    
 }
