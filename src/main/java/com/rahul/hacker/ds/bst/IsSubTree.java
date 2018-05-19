@@ -3,23 +3,7 @@ package com.rahul.hacker.ds.bst;
 import java.util.ArrayList;
 import java.util.List;
 
-class  TreeNodeInfo {
-    BSTNode node;
-    BSTNode lastNode;
 
-    public TreeNodeInfo(BSTNode node, BSTNode lastNode) {
-        this.node = node;
-        this.lastNode = lastNode;
-    }
-
-    public BSTNode getNode() {
-        return node;
-    }
-
-    public BSTNode getLastNode() {
-        return lastNode;
-    }
-}
 
 public class IsSubTree {
 
@@ -93,5 +77,23 @@ public class IsSubTree {
         }
 
         return j == sizeB;
+    }
+
+    static class  TreeNodeInfo {
+        BSTNode node;
+        BSTNode lastNode;
+
+        public TreeNodeInfo(BSTNode node, BSTNode lastNode) {
+            this.node = node;
+            this.lastNode = lastNode;
+        }
+
+        public BSTNode getNode() {
+            return node;
+        }
+
+        public BSTNode getLastNode() {
+            return lastNode;
+        }
     }
 }
