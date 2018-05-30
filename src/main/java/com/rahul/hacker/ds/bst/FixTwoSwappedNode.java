@@ -6,18 +6,21 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-class Node {
 
-    int data;
-    Node left, right;
 
-    Node(int d) {
-        data = d;
-        left = right = null;
+public class FixTwoSwappedNode {
+
+    static class Node {
+
+        int data;
+        Node left, right;
+
+        Node(int d) {
+            data = d;
+            left = right = null;
+        }
     }
-}
 
-class BinaryTree {
     Node first, middle, last, prev;
 
     // This function does inorder traversal
@@ -36,8 +39,7 @@ class BinaryTree {
             // If this node is smaller than
             // the previous node, it's
             // violating the BST rule.
-            if (prev != null && root.data <
-                    prev.data) {
+            if (prev != null && root.data < prev.data) {
                 // If this is first violation,
                 // mark these two nodes as
                 // 'first' and 'middle'
@@ -124,7 +126,7 @@ class BinaryTree {
 
         System.out.println("Inorder Traversal" +
                 " of the original tree");
-        BinaryTree tree = new BinaryTree();
+        FixTwoSwappedNode tree = new FixTwoSwappedNode();
         tree.printInorder(root);
 
         tree.correctBST(root);

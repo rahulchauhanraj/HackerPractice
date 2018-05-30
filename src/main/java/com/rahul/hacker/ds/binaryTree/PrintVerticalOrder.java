@@ -29,7 +29,7 @@ public class PrintVerticalOrder {
         if(map.containsKey(index)){
             map.get(index).add(root.data);
         }else{
-            map.put(index, new ArrayList<>(Arrays.asList(root.data)));
+            map.put(index, new ArrayList<>(Collections.singletonList(root.data)));
         }
         verticalOrder(root.left, index-1, map, left);
         verticalOrder(root.right, index+1, map, left);

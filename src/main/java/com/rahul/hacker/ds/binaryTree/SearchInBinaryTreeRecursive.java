@@ -13,14 +13,6 @@ public class SearchInBinaryTreeRecursive {
     }
 
     private static boolean searchInBinaryTree(BinaryTreeNode root, int data) {
-        if(root == null) {
-            return false;
-        }
-
-        if(root.getData() == data) {
-            return true;
-        }
-
-        return (searchInBinaryTree(root.getLeft(), data) || searchInBinaryTree(root.getRight(), data));
+        return ((root != null) && (root.getData() == data || searchInBinaryTree(root.getLeft(), data) || searchInBinaryTree(root.getRight(), data)));
     }
 }

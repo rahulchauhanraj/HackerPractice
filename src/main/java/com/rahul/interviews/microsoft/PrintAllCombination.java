@@ -37,4 +37,27 @@ package com.rahul.interviews.microsoft;
 
 
 public class PrintAllCombination {
+    private static char[][] a = {{'0'}, {'1'}, {'A', 'B', 'C'}, {'D','E','F'}, {'G','H','I'}, {'J','K','L'}, {'M','N','O'}, {'P','Q','R','S'}, {'T','U','V'}, {'W','X','Y','Z'}};
+
+    public static void main(String[] args){
+        String s = "23761";
+        StringBuilder sb = new StringBuilder();
+        printAllCombination(s, 0, sb);
+    }
+
+    private static void printAllCombination(String s, int index, StringBuilder sb){
+        if(index >= s.length()){
+            System.out.println(sb);
+            return;
+        }
+        int v = Integer.parseInt(String.valueOf(s.charAt(index)));
+        char[] chars = a[v];
+
+        for(char ch : chars) {
+            sb.append(ch);
+            printAllCombination(s, index + 1, sb);
+            sb.deleteCharAt(sb.length()-1);
+        }
+
+    }
 }
