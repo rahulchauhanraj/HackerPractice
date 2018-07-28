@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Longest Increasing Sub-Sequence (LIS) problem can be solved using Dynamic Programming.
  * The Longest Increasing Sub-Sequence (LIS) problem is to find the length of the longest sub-sequence of a given sequence such that all elements of the
  * sub-sequence are sorted in increasing order. For example, the length of LIS for {10, 22, 9, 33, 21, 50, 41, 60, 80} is 6 and LIS is {10, 22, 33, 50, 60, 80}.
- * Solution with O(n*n) complexity.
+ * TimeLag with O(n*n) complexity.
  */
 public class LongestIncreasingSubSequence {
 
