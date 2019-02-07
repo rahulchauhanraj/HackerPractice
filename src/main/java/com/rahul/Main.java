@@ -1,16 +1,140 @@
 package com.rahul;
 
+import java.math.BigDecimal;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 public class Main {
 
-    public static void main(String[] args) {
-        String[] s = {"6th Jun 1933"};
-        reformatDate(s);
+    private static String DOT = "\\.";
 
+    private static List<Integer> list = new LinkedList<>();
+
+    public static void main(String[] args) throws Exception {
+
+        String val = null;
+        System.out.println(Boolean.parseBoolean(val));
+        long a = 101;
+        long b = 100;
+
+        //System.out.println(a & b);
+
+        IntStream.range(1000,2000).parallel().forEach(value -> list.add(value));
+        //IntStream.range(2000,3000).parallel().forEach(value -> list.add(value));
+
+        //Thread.sleep(2000);
+        System.out.println(list.size());
+
+        //System.out.println((long) Math.pow(2, 23));
+
+        /*String level = "A.B";
+
+        String[] levels = level.split(DOT);
+        System.out.println(levels);*/
+        /*try {
+            File file = new File("/tmp/secret-data-with-description.txt");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            List<String> list = new ArrayList<>();
+            while ((line = bufferedReader.readLine()) != null) {
+                if(line.trim().length() > 0) {
+                    list.add(line);
+                }
+            }
+            fileReader.close();
+            System.out.println("Contents of file:");
+            System.out.println(list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
 
+    public static int compareVersions(String oldVersionStr, String newVersionStr) {
+        String[] oldVersionNumbers = oldVersionStr.trim().split(DOT);
+        String[] newVersionNumbers = newVersionStr.trim().split(DOT);
+
+        int count = 0;
+
+        for (String oldVersionNumber : oldVersionNumbers) {
+
+            int oldVersion = Integer.parseInt(oldVersionNumber);
+            int newVersion = Integer.parseInt(newVersionNumbers[count]);
+
+            if (oldVersion > newVersion) {
+                return 1;
+            } else if (oldVersion < newVersion) {
+                return -1;
+            }
+
+            count++;
+        }
+
+        if(count < newVersionNumbers.length) {
+            return -1;
+        }
+
+        return 0;
+    }
+
+    private static void testExecutor() throws Exception{
+        ExecutorService service = Executors.newFixedThreadPool(2);
+
+        int i = 0;
+        while(i != 1000){
+            int val = i;
+            service.submit(()-> {System.out.println(val);
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+            i++;
+        }
+
+        service.shutdown();
+        while(!service.isShutdown()) {
+            service.awaitTermination(100, TimeUnit.MILLISECONDS);
+        }
+        System.out.println("Shutdown Completed ************************");
+    }
+
+    static class DecimalData implements Comparable<DecimalData> {
+        BigDecimal d;
+        String s;
+
+        DecimalData (BigDecimal d, String s) {
+            this.d = d;
+            this.s = s;
+        }
+
+        public int compareTo(DecimalData data) {
+            return this.d.compareTo(data.d);
+        }
+    }
+
+    private static void sortBigDecimal(){
+        int n = 5;
+
+        String[] s = {"0.00", "2.10", "0.0", "-100", "2.00"};
+
+        List<DecimalData> l = new ArrayList<>();
+
+        for(int i =0; i < n; i++){
+            l.add(new DecimalData(new BigDecimal(s[i]), s[i]));
+        }
+
+        Collections.sort(l);
+
+        for(int i =0; i < n; i++){
+            l.add(new DecimalData(new BigDecimal(s[i]), s[i]));
+        }
+    }
 
     static String[] reformatDate(String[] dates) {
         Map<String, String> map = new HashMap<>();

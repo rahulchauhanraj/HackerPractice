@@ -1,6 +1,5 @@
 package com.rahul.hacker.testsuites;
 
-import com.ge.apm.alarmmanagement.asciidoc.ApiDocumentation;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -9,8 +8,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        JavaTestSuite.class,
-        ApiDocumentation.class
+        JavaTestSuite.class
+        //,ApiDocumentation.class
 })
 public class AllTestSuite {
     // the class remains empty, used only as a holder for the above annotations

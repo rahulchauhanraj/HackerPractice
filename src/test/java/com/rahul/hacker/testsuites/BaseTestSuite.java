@@ -1,6 +1,6 @@
 package com.rahul.hacker.testsuites;
 
-import com.ge.apm.alarmmanagement.utilities.TestClassesPatternResolver;
+import com.rahul.hacker.util.TestClassesPatternResolver;
 import org.junit.runners.Suite;
 import org.junit.runners.model.InitializationError;
 
