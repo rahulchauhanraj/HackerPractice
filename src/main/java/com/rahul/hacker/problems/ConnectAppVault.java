@@ -12,9 +12,9 @@ import java.security.KeyStore;
 
 public class ConnectAppVault {
 
-    private static String keyPassphrase = "Walmart@2018";
+    private static String keyPassphrase = "test123";
 
-    static String keyStoreFile = "/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/security/stage-dispense-ccm.wal-mart.com.jks";
+    static String keyStoreFile = "/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/security/test-cert.jks";
 
     public static void main (String args[]) throws Exception{
 
@@ -26,7 +26,7 @@ public class ConnectAppVault {
             SSLContext sslContext = SSLContexts.custom().loadKeyMaterial(keyStore, keyPassphrase.toCharArray()).build();
 
             CloseableHttpClient httpClient = HttpClients.custom().setSslcontext(sslContext).build();
-            CloseableHttpResponse response = httpClient.execute(new HttpPost("https://secvault.staging.walmart.com/vault-impl/rest/vault/v3/auth/KeypairAuth/register"));
+            CloseableHttpResponse response = httpClient.execute(new HttpPost("https://localhost:8080/KeypairAuth/register"));
             System.out.println(response);
         }catch (Exception e) {
             e.printStackTrace();
