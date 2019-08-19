@@ -1,6 +1,6 @@
 package com.rahul.hacker.ds.problems.linkedList;
 
-import com.rahul.hacker.ds.linkedList.DoublyLinkedListNode;
+import com.rahul.hacker.ds.linked.list.DoublyLinkedListNode;
 import com.rahul.hacker.util.ScannerUtil;
 
 import java.util.Scanner;

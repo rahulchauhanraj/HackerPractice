@@ -1,7 +1,5 @@
 package com.rahul.hacker.algo;
 
-import java.util.Arrays;
-
 public class RemoveAdjacentDuplicates {
 
     // This function recursively removes duplicates

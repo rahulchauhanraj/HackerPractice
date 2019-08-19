@@ -1,53 +1,60 @@
 package com.rahul.hacker.ds.bst;
 
-import static com.rahul.hacker.ds.bst.BSTToDLL.convertBstToDLL;
-
 public class DLLToBST {
 
-    public static void main (String args[]) {
-        BSTNode head = convertBstToDLL(BSTree.getTreeRoot());
+    public static void main (String[] args) {
+
+        BSTNode head = getDLL();
+        head.getLeft().setRight(null);
+        head.setLeft(null);
         BSTNode root = dllToBst(head);
         BSTree.printTree(root);
     }
 
     public static BSTNode dllToBst(BSTNode head) {
-        BSTNode root = getRightMidNode(head);
-        convertDLLToBST(root);
-        return root;
+        return convertDLLToBST(head);
     }
 
-    private static void convertDLLToBST(BSTNode root) {
-        if(root == null) {
-            return;
+    private static BSTNode convertDLLToBST(BSTNode head) {
+
+        if(head == null) {
+            return null;
         }
-        BSTNode rightHead = getRightMidNode(root.getRight());
-        BSTNode leftHead = getLeftMidNode(root.getLeft());
+
+        if(head.getRight() == null){
+            return head;
+        }
+
+        BSTNode root = getRightMidNode(head);
 
         if(root.getLeft() != null)
             root.getLeft().setRight(null);
         if(root.getRight() != null)
             root.getRight().setLeft(null);
 
-        root.setLeft(leftHead);
-        root.setRight(rightHead);
+        BSTNode rightHead = getRightMidNode(root.getRight());
+        BSTNode leftHead = getRightMidNode(head);
 
-        convertDLLToBST(leftHead);
-        convertDLLToBST(rightHead);
+        root.setLeft(convertDLLToBST(leftHead));
+        root.setRight(convertDLLToBST(rightHead));
+
+        return root;
     }
 
     private static BSTNode getRightMidNode(BSTNode head) {
+
         if(head == null) {
             return null;
         }
+
         BSTNode p1 = head;
-        BSTNode p2 = head.getRight();
-        while(p2 != null) {
+        BSTNode p2 = head;
+        while(p2 != null && p2.getRight() != head) {
             p2 = p2.getRight();
 
             if (p2 == null){
                 break;
             }
-
             p1 = p1.getRight();
             p2 = p2.getRight();
         }
@@ -55,23 +62,33 @@ public class DLLToBST {
         return p1;
     }
 
-    private static BSTNode getLeftMidNode(BSTNode head) {
-        if(head == null) {
-            return null;
-        }
-        BSTNode p1 = head;
-        BSTNode p2 = head.getLeft();
-        while(p2 != null) {
-            p2 = p2.getLeft();
+    private static BSTNode getDLL() {
 
-            if (p2 == null){
-                break;
-            }
+        BSTNode head = new BSTNode(2);
+        head.setLeft(head);
+        head.setRight(head);
 
-            p1 = p1.getLeft();
-            p2 = p2.getLeft();
-        }
+        addNode(head, 6);
+        addNode(head, 8);
+        addNode(head, 10);
+        addNode(head, 12);
+        addNode(head, 14);
+        addNode(head, 16);
+        addNode(head, 18);
 
-        return p1;
+
+        return head;
     }
+
+    private static void addNode(BSTNode head, int v) {
+
+        BSTNode p1 = new BSTNode(v);
+        BSTNode left = head.getLeft();
+
+        left.setRight(p1);
+        p1.setLeft(left);
+        p1.setRight(head);
+        head.setLeft(p1);
+    }
+
 }

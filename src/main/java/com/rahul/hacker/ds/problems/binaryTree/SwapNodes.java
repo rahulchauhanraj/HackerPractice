@@ -1,7 +1,6 @@
 package com.rahul.hacker.ds.problems.binaryTree;
 
-import com.rahul.hacker.ds.binaryTree.BinaryTree;
-import com.rahul.hacker.ds.binaryTree.BinaryTreeNode;
+import com.rahul.hacker.ds.binary.tree.BinaryTreeNode;
 import com.rahul.hacker.util.ScannerUtil;
 
 import java.util.LinkedList;

@@ -1,5 +1,8 @@
 package com.rahul;
 
+import com.rahul.hacker.problems.EncryptDecrypt;
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -15,6 +18,14 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        int av = '9';
+
+        System.out.println(av);
+
+        StringBuilder sb = new StringBuilder();
+        sb.insert(sb.length(), '-');
+
+        System.out.println(EncryptDecrypt.encrypt("pass123"));
         String val = null;
         System.out.println(Boolean.parseBoolean(val));
         long a = 101;

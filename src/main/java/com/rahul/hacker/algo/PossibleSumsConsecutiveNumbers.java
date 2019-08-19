@@ -13,24 +13,25 @@ public class PossibleSumsConsecutiveNumbers {
         printSums(15);
     }
 
-    private static void printSums(int N)
+    private static void printSums(int n)
     {
-        int start = 1, end = 1;
+        int start = 1;
+        int end = 1;
         int sum = 1;
 
-        while (start <= N/2)
+        while (start <= n/2)
         {
-            if (sum < N)
+            if (sum < n)
             {
                 end += 1;
                 sum += end;
             }
-            else if (sum > N)
+            else if (sum > n)
             {
                 sum -= start;
                 start += 1;
             }
-            else if (sum == N)
+            else
             {
                 for (int i = start; i <= end; ++i) {
                     System.out.print(i + " ");

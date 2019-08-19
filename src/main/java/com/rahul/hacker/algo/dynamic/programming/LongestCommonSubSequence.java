@@ -1,7 +1,5 @@
 package com.rahul.hacker.algo.dynamic.programming;
 
-import java.util.Arrays;
-
 //  Java implementation of finding length of longest
 // Common substring using Dynamic Programming
 public class LongestCommonSubSequence
