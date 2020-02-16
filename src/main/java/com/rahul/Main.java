@@ -1,7 +1,6 @@
 package com.rahul;
 
 import com.rahul.hacker.problems.EncryptDecrypt;
-import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -33,7 +32,7 @@ public class Main {
 
         //System.out.println(a & b);
 
-        IntStream.range(1000,2000).parallel().forEach(value -> list.add(value));
+        IntStream.range(1000, 2000).parallel().forEach(value -> list.add(value));
         //IntStream.range(2000,3000).parallel().forEach(value -> list.add(value));
 
         //Thread.sleep(2000);
@@ -62,6 +61,116 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
+
+    }
+
+    /*public static void main(String[] args) {
+
+        int[] a = {4,6,8};
+        int d =5;
+
+        int gcd = new Main().generalizedGCD(d, a);
+        System.out.println(gcd);
+    }
+*/
+    public int generalizedGCD(int num, int[] arr)
+    {
+        int min = Integer.MAX_VALUE;
+
+        for(int i : arr){
+            if(i < min) {
+                min = i;
+            }
+        }
+
+        List<Integer> fact = new ArrayList<>();
+
+        fact.add(1);
+
+        for(int i=2; i <= min; i++){
+            if(min%i == 0){
+                fact.add(i);
+            }
+        }
+
+        for(int i : arr){
+
+            List<Integer> fact1 = new ArrayList<>();
+
+            for(int f : fact){
+                if(i%f == 0){
+                    fact1.add(f);
+                }
+            }
+            fact = fact1;
+        }
+        int r = 1;
+        for(int i = 0; i< fact.size(); i++){
+            int v = fact.get(i);
+            boolean skip = false;
+            for(int j = i+1; j< fact.size(); j++){
+                if(fact.get(j) % v == 0){
+                   skip = true;
+                   break;
+                }
+            }
+
+            if(!skip){
+                r *= v;
+            }
+        }
+
+        return r;
+    }
+
+
+    /*public static void main(String[] args) {
+
+        int[] a = {1,0,0,0,0,1,0,0};
+        int d =1;
+
+        List<Integer> state = new Main().cellCompete(a, d);
+        System.out.println(state);
+        // 1 0 0 0 0 1 0 0
+        // 0 0 0 0 0 1 1 0
+    }*/
+
+    public List<Integer> cellCompete(int[] st, int days)
+    {
+
+        while(days > 0){
+
+            int[] s = new int[8];
+
+            if(st[1] == 0) {
+                s[0] = 0;
+            }else {
+                s[0] = 1;
+            }
+
+            if(st[6] == 0) {
+                s[7] = 0;
+            }else {
+                s[7] = 1;
+            }
+
+            for(int i=1; i<7;i++){
+
+                if((st[i-1] == 0 && st[i+1] == 0) || (st[i-1] == 1 && st[i+1] == 1)) {
+                    s[i] = 0;
+                }else {
+                    s[i] = 1;
+                }
+            }
+
+            st = s;
+            days--;
+        }
+        List<Integer> l = new ArrayList<Integer>();
+        for(int v : st){
+            l.add(v);
+        }
+        return l;
     }
 
 
@@ -146,6 +255,23 @@ public class Main {
             l.add(new DecimalData(new BigDecimal(s[i]), s[i]));
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+    /*public static void main(String[] args) {
+        String[] s = {"6th Jun 1933"};
+        reformatDate(s);
+
+    }*/
+
 
     static String[] reformatDate(String[] dates) {
         Map<String, String> map = new HashMap<>();
